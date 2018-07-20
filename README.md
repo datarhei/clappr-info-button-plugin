@@ -1,6 +1,6 @@
 # Clappr Info Button Plugin
 
-<img src="https://raw.githubusercontent.com/datarhei/clappr-info-button-plugin/master/screenshot.png"/>
+![Snapshot](../master/snapshot.png)
 
 ## Usage
 
