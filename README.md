@@ -28,7 +28,7 @@ You can also customize the options and title:
 var player = new Clappr.Player({
   source: "http://your.video/here.m3u8",
   plugins: [InfoButton],
-  levelSelectorConfig: {
+  infoButtonConfig: {
     title: 'Info',
     options: [
           {id: 'about', label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
