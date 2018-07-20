@@ -36,3 +36,37 @@ var player = new Clappr.Player({
   },
 });
 ```
+
+## How to hack
+
+Clone this repository
+
+```bash
+git clone https://github.com/datarhei/clappr-info-button-plugin.git
+cd clappr-info-button-plugin
+```
+
+Install all dependencies
+
+```bash
+npm install
+```
+
+Modify and build the code
+
+```bash
+# hack, hack, hack
+
+# check the JS-syntax and fix it (optionally)
+npm run lint
+npm run lint:fix
+
+# build the unminified version
+npm run build
+
+# build the minified version
+npm run release
+
+# find the builds in dist/
+```
+
