@@ -9,7 +9,7 @@ Add both Clappr and Info Button plugin scripts to your HTML:
 ```html
 <head>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-  <script type="text/javascript" src="dist/info-button.js"></script>
+  <script type="text/javascript" src="dist/info-button.min.js"></script>
 </head>
 ```
 
