@@ -8,6 +8,10 @@ const DEFAULT_INFO_ITEMS = [
 
 const DEFAULT_INFO_TITLE = 'Info';
 
+const DEFAULT_INFO_BUTTON = {
+	title: DEFAULT_INFO_TITLE
+};
+
 export default class InfoButton extends UICorePlugin {
 
 	static get version() {
@@ -65,6 +69,10 @@ export default class InfoButton extends UICorePlugin {
 		//console.log('InfoButtonPlugin#render()');
 		const cfg = this.core.options.infoButtonConfig || {};
 
+		if (!this.infoButton) {
+			this.infoButton = cfg.button || DEFAULT_INFO_BUTTON;
+		}
+
 		if (!this.infoTitle) {
 			this.infoTitle = cfg.title || DEFAULT_INFO_TITLE;
 		}
@@ -76,7 +84,7 @@ export default class InfoButton extends UICorePlugin {
 		if (this.shouldRender()) {
 			let style = Styler.getStyleFor(pluginStyle, { baseUrl: this.core.options.baseUrl });
 
-			this.$el.html(this.template({ 'items': this.infoItems, 'title': this.getTitle() }));
+			this.$el.html(this.template({ 'button': this.infoButton, 'items': this.infoItems, 'title': this.getTitle() }));
 			this.$el.append(style);
 			this.core.mediaControl.$('.media-control-right-panel').append(this.el);
 		}

@@ -1,5 +1,13 @@
 <button data-info-button-button>
-  <%= title %>
+  <% if (button) { %>
+    <% if (button.image) { %>
+      <img src="<%= button.image %>" title="<%= button.title %>"/>
+    <% } else if (button.title) { %>
+      <%= button.title %>
+    <% }; %>
+  <% } else if (title) { %>
+    <%= title %>
+  <% }; %>
 </button>
 <ul>
   <% if (title) { %>

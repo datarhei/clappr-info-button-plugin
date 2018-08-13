@@ -1072,7 +1072,7 @@ eval("Object.defineProperty(exports,\"__esModule\",{value:true});var _classCallC
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = \"<button data-info-button-button>\\n  <%= title %>\\n</button>\\n<ul>\\n  <% if (title) { %>\\n  <li data-title><%= title %></li>\\n  <% }; %>\\n  <% for (var i = 0; i < items.length; i++) { %>\\n    <li><a href=\\\"#\\\" data-info-button-select=\\\"<%= items[i].id %>\\\"><%= items[i].label %></a></li>\\n  <% }; %>\\n</ul>\\n\";\n\n//# sourceURL=webpack://InfoButton/./src/public/info-button.html?");
+eval("module.exports = \"<button data-info-button-button>\\n  <% if (button) { %>\\n    <img src=\\\"<%= button.image %>\\\" title=\\\"<%= button.title %>\\\"/>\\n  <% } else if (title) { %>\\n    <%= title %>\\n  <% }; %>\\n</button>\\n<ul>\\n  <% if (title) { %>\\n  <li data-title><%= title %></li>\\n  <% }; %>\\n  <% for (var i = 0; i < items.length; i++) { %>\\n    <li><a href=\\\"#\\\" data-info-button-select=\\\"<%= items[i].id %>\\\"><%= items[i].label %></a></li>\\n  <% }; %>\\n</ul>\\n\";\n\n//# sourceURL=webpack://InfoButton/./src/public/info-button.html?");
 
 /***/ }),
 

@@ -11,6 +11,12 @@
     border: none;
     font-size: 10px;
     height: 100%;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 22px;
+    }
 
     &:hover {
       color: #c9c9c9;
