@@ -26,17 +26,17 @@ You can also customize the button, options, and title:
 
 ```javascript
 var player = new Clappr.Player({
-	source: "http://your.video/here.m3u8",
-	plugins: [InfoButton],
-	infoButtonConfig: {
-		button: {
-			image: 'info-button.png'
-		},
-		title: 'Info',
-		options: [
-					{id: 'about', label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-		]
-	},
+   source: "http://your.video/here.m3u8",
+   plugins: [InfoButton],
+   infoButtonConfig: {
+      button: {
+         image: 'info-button.png'
+      },
+      title: 'Info',
+      options: [
+         {id: 'about', label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+      ]
+   },
 });
 ```
 
