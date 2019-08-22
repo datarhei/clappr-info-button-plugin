@@ -1,4 +1,4 @@
-import { Events, Styler, UICorePlugin, template } from 'clappr';
+import { Events, Styler, UICorePlugin, UIContainerPlugin, template } from 'clappr';
 import pluginHtml from './public/info-button.html';
 import pluginStyle from './public/style.scss';
 
@@ -21,7 +21,7 @@ export default class InfoButton extends UICorePlugin {
 	get name() {
 		return 'info_button';
 	}
-	
+
 	get template() {
 		return template(pluginHtml);
 	}
@@ -41,13 +41,13 @@ export default class InfoButton extends UICorePlugin {
 	}
 
 	bindEvents() {
-		this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this.reload);
+		this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.reload);
 		this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
 		this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_HIDE, this.hideInfoButtonMenu);
 	}
 
 	unBindEvents() {
-		this.stopListening(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED);
+		this.stopListening(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED);
 		this.stopListening(this.core.mediaControl, Events.MEDIACONTROL_RENDERED);
 		this.stopListening(this.core.mediaControl, Events.MEDIACONTROL_HIDE);
 	}
@@ -58,7 +58,7 @@ export default class InfoButton extends UICorePlugin {
 	}
 
 	shouldRender() {
-		if (!this.core.getCurrentContainer()) {
+		if (!this.core.activeContainer) {
 			return false;
 		}
 
@@ -86,6 +86,7 @@ export default class InfoButton extends UICorePlugin {
 
 			this.$el.html(this.template({ 'button': this.infoButton, 'items': this.infoItems, 'title': this.getTitle() }));
 			this.$el.append(style);
+
 			this.core.mediaControl.$('.media-control-right-panel').append(this.el);
 		}
 
