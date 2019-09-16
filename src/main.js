@@ -117,7 +117,7 @@ export default class InfoButton extends UICorePlugin {
 		this.toggleContextMenu();
 	}
 
-	hideSelectLevelMenu() {
+	hideInfoButtonMenu() {
 		this.$('.info_button ul').hide();
 	}
 
