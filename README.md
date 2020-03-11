@@ -8,8 +8,8 @@ Add both Clappr and Info Button plugin scripts to your HTML:
 
 ```html
 <head>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-	<script type="text/javascript" src="dist/info-button.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script type="text/javascript" src="dist/info-button.min.js"></script>
 </head>
 ```
 
@@ -17,8 +17,8 @@ Then just add `InfoButton` into the list of plugins of your player instance:
 
 ```javascript
 var player = new Clappr.Player({
-	source: "http://your.video/here.m3u8",
-	plugins: [InfoButton]
+    source: "http://your.video/here.m3u8",
+    plugins: [InfoButton]
 });
 ```
 
@@ -26,17 +26,17 @@ You can also customize the button, options, and title:
 
 ```javascript
 var player = new Clappr.Player({
-	source: "http://your.video/here.m3u8",
-	plugins: [InfoButton],
-	infoButtonConfig: {
-		button: {
-			image: 'info-button.png'
-		},
-		title: 'Info',
-		options: [
-			{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-		]
-	},
+    source: "http://your.video/here.m3u8",
+    plugins: [InfoButton],
+    infoButtonConfig: {
+        button: {
+            image: 'info-button.png'
+        },
+        title: 'Info',
+        options: [
+            {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+        ]
+    },
 });
 ```
 
@@ -46,25 +46,25 @@ a German translation:
 
 ```javascript
 var player = new Clappr.Player({
-	source: "http://your.video/here.m3u8",
-	plugins: [InfoButton],
-	infoButtonConfig: {
-		button: {
-			image: 'info-button.png'
-		},
-		title: 'Info',
-		options: [
-			{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-		],
-		strings: {
-			'de': {
-				title: 'Informationen',
-				options: [
-					{label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
-				]
-			}
-		}
-	},
+    source: "http://your.video/here.m3u8",
+    plugins: [InfoButton],
+    infoButtonConfig: {
+        button: {
+            image: 'info-button.png'
+        },
+        title: 'Info',
+        options: [
+            {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+        ],
+        strings: {
+            'de': {
+                title: 'Informationen',
+                options: [
+                    {label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
+                ]
+            }
+        }
+    },
 });
 ```
 
@@ -78,26 +78,26 @@ translations:
 
 ```javascript
 var player = new Clappr.Player({
-	source: "http://your.video/here.m3u8",
-	plugins: [InfoButton],
-	infoButtonConfig: {
-		button: {
-			image: 'info-button.png'
-		},
-		title: 'Info',
-		options: [
-			{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-		],
-		language: 'de',
-		strings: {
-			'de': {
-				title: 'Informationen',
-				options: [
-					{label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
-				]
-			}
-		}
-	},
+    source: "http://your.video/here.m3u8",
+    plugins: [InfoButton],
+    infoButtonConfig: {
+        button: {
+            image: 'info-button.png'
+        },
+        title: 'Info',
+        options: [
+            {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+        ],
+        language: 'de',
+        strings: {
+            'de': {
+                title: 'Informationen',
+                options: [
+                    {label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
+                ]
+            }
+        }
+    },
 });
 ```
 
