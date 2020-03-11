@@ -26,17 +26,78 @@ You can also customize the button, options, and title:
 
 ```javascript
 var player = new Clappr.Player({
-   source: "http://your.video/here.m3u8",
-   plugins: [InfoButton],
-   infoButtonConfig: {
-      button: {
-         image: 'info-button.png'
-      },
-      title: 'Info',
-      options: [
-         {id: 'about', label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-      ]
-   },
+	source: "http://your.video/here.m3u8",
+	plugins: [InfoButton],
+	infoButtonConfig: {
+		button: {
+			image: 'info-button.png'
+		},
+		title: 'Info',
+		options: [
+			{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+		]
+	},
+});
+```
+
+In order to support different languages, you have the possibility to provide translations for the info button. In `infoButtonConfig` you
+add a `strings` object which has the locale of the language as key and an object with `title` and `options` as value, e.g. to provide
+a German translation:
+
+```javascript
+var player = new Clappr.Player({
+	source: "http://your.video/here.m3u8",
+	plugins: [InfoButton],
+	infoButtonConfig: {
+		button: {
+			image: 'info-button.png'
+		},
+		title: 'Info',
+		options: [
+			{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+		],
+		strings: {
+			'de': {
+				title: 'Informationen',
+				options: [
+					{label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
+				]
+			}
+		}
+	},
+});
+```
+
+Instead of simply `de` you could use `de-DE`, but then this translation will only be used if the current locale matches exactly. With only `de`
+all `de-*` variants will cause this translation to be used.
+
+If a translation for the current locale is not found, the defaults (as given in `title` and `options`) will be used instead.
+
+In case you want to override the language of the player, add the key `language` to `infoButtonConfig` with a matching locale from your provided
+translations:
+
+```javascript
+var player = new Clappr.Player({
+	source: "http://your.video/here.m3u8",
+	plugins: [InfoButton],
+	infoButtonConfig: {
+		button: {
+			image: 'info-button.png'
+		},
+		title: 'Info',
+		options: [
+			{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+		],
+		language: 'de',
+		strings: {
+			'de': {
+				title: 'Informationen',
+				options: [
+					{label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
+				]
+			}
+		}
+	},
 });
 ```
 

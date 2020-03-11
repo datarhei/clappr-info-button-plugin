@@ -1,9 +1,9 @@
-import { Events, Styler, UICorePlugin, UIContainerPlugin, template } from 'clappr';
+import { Events, Styler, UICorePlugin, UIContainerPlugin, Utils, template } from 'clappr';
 import pluginHtml from './public/info-button.html';
 import pluginStyle from './public/style.scss';
 
 const DEFAULT_INFO_ITEMS = [
-	{ id: 'about', label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin' },
+	{ label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin' },
 ];
 
 const DEFAULT_INFO_TITLE = 'Info';
@@ -66,8 +66,15 @@ export default class InfoButton extends UICorePlugin {
 	}
 
 	render() {
-		//console.log('InfoButtonPlugin#render()');
 		const cfg = this.core.options.infoButtonConfig || {};
+
+		if (!this.lang) {
+			this.lang = cfg.language || this.language();
+		}
+
+		if (!this.strings) {
+			this.strings = cfg.strings || {};
+		}
 
 		if (!this.infoButton) {
 			this.infoButton = cfg.button || DEFAULT_INFO_BUTTON;
@@ -79,6 +86,12 @@ export default class InfoButton extends UICorePlugin {
 
 		if (!this.infoItems) {
 			this.infoItems = cfg.options || DEFAULT_INFO_ITEMS;
+		}
+
+		this.selectTranslation();
+
+		for(let i = 0; i < this.infoItems.length; i++) {
+			this.infoItems[i].id = 'info' + i;
 		}
 
 		if (this.shouldRender()) {
@@ -93,9 +106,44 @@ export default class InfoButton extends UICorePlugin {
 		return this;
 	}
 
-	onInfoButton(event) {
-		//console.log('InfoButtonPlugin#onInfoButton()', event);
+	language() { return this.core.options.language || Utils.getBrowserLanguage() }
 
+	selectTranslation() {
+		let t = null;
+
+		if(this.lang in this.strings) {
+			t = this.strings[this.lang];
+		}
+
+		if(t == null) {
+			let matches = this.lang.match(/^([a-z]+)-[A-Z]+$/);
+			if(matches !== null) {
+				let lang = matches[1];
+
+				if(lang in this.strings) {
+					t = this.strings[lang];
+				}
+			}
+		}
+
+		if(t == null) {
+			return;
+		}
+
+		if('options' in t) {
+			this.infoItems = t.options;
+		}
+
+		if('title' in t) {
+			this.infoTitle = t.title;
+
+			this.infoButton.title = t.title;
+		}
+
+		return;
+	}
+
+	onInfoButton(event) {
 		let id = event.target.dataset.infoButtonSelect;
 
 		for (let i in this.infoItems) {

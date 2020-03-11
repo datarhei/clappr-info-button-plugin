@@ -1,7 +1,7 @@
 {
 	"name": "info-button",
 	"description": "A simple plugin for Clappr that adds an info button.",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"license": "MIT",
 	"repository": "datarhei/clappr-info-button-plugin",
 	"main": "dist/info-button.js",
@@ -38,7 +38,7 @@
 		"css-loader": "^1.0.0",
 		"eslint": "^5.1.0",
 		"html-loader": "^0.5.5",
-		"node-sass": "^4.9.2",
+		"node-sass": "^4.13.1",
 		"postcss-loader": "^2.1.1",
 		"sass-loader": "^7.0.3",
 		"style-loader": "^0.21.0",
