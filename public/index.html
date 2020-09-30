@@ -8,7 +8,7 @@
     <script type="text/javascript" charset="utf-8">
     window.onload = function() {
         var player = new Clappr.Player({
-            source: 'https://cdn.livespotting.com/windit-edge/smil:LS_31d7b.smil/playlist.m3u8',
+            source: 'https://ch-fra-n8.livespotting.com/vpu/qvciam2t/nsav1jnq_720.m3u8',
             parentId: '#player',
 
             plugins: [InfoButton],
@@ -19,13 +19,15 @@
                 },
                 title: 'Info',
                 options: [
-                    {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
+                    {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+                    {label: 'Hello', link: function() { alert('hello!'); }}
                 ],
                 strings: {
                     'de': {
                         title: 'Informationen',
                         options: [
-                            {label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'}
+                            {label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+                            {label: 'Hallo', link: function() { alert('hallo!'); }}
                         ]
                     }
                 }

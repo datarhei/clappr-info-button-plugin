@@ -35,10 +35,14 @@ var player = new Clappr.Player({
         title: 'Info',
         options: [
             {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+            {label: 'Hello', link: function() { alert('Hello!'); }}
         ]
     },
 });
 ```
+
+The provided links in the options will be openend in a new window/tab. If the link is a function, the function will be executed and no
+new window/tab will be opened.
 
 In order to support different languages, you have the possibility to provide translations for the info button. In `infoButtonConfig` you
 add a `strings` object which has the locale of the language as key and an object with `title` and `options` as value, e.g. to provide
