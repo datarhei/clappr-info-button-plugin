@@ -1,6 +1,7 @@
-import { Events, Styler, UICorePlugin, Utils, template } from 'clappr';
+import { Events, Styler, UIContainerPlugin, Utils, template, $ } from 'clappr';
 import pluginHtml from './public/info-button.html';
 import pluginStyle from './public/style.scss';
+import icon from './public/icon.svg';
 
 const DEFAULT_INFO_ITEMS = [
 	{ label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin' },
@@ -12,7 +13,11 @@ const DEFAULT_INFO_BUTTON = {
 	title: DEFAULT_INFO_TITLE
 };
 
-export default class InfoButton extends UICorePlugin {
+export default class InfoButton extends UIContainerPlugin {
+	constructor(container) {
+		super(container);
+		this.configure();
+	}
 
 	static get version() {
 		return VERSION;
@@ -41,51 +46,47 @@ export default class InfoButton extends UICorePlugin {
 	}
 
 	bindEvents() {
-		this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.reload);
-		this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this.render);
-		this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_HIDE, this.hideInfoButtonMenu);
-	}
-
-	unBindEvents() {
-		this.stopListening(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED);
-		this.stopListening(this.core.mediaControl, Events.MEDIACONTROL_RENDERED);
-		this.stopListening(this.core.mediaControl, Events.MEDIACONTROL_HIDE);
+		this.listenTo(this.container, Events.CONTAINER_OPTIONS_CHANGE, this.reload);
+		this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_SHOW, this.render);
+		this.listenTo(this.container, Events.CONTAINER_MEDIACONTROL_HIDE, this.hideInfoButtonMenu);
 	}
 
 	reload() {
-		this.unBindEvents();
-		this.bindEvents();
+		this.$el.remove();
+		this.configure();
 	}
 
-	shouldRender() {
-		if (!this.core.activeContainer) {
-			return false;
+	configure() {
+		const cfg = this.options.infoButtonConfig || {};
+
+		this.visible = true;
+		if ( 'visible' in cfg) {
+			this.visible = !!(cfg.visible);
 		}
 
-		return true;
-	}
-
-	render() {
-		const cfg = this.core.options.infoButtonConfig || {};
-
-		if (!this.lang) {
-			this.lang = cfg.language || this.language();
+		this.lang = this.language();
+		if ( 'language' in cfg) {
+			this.lang = cfg.language;
 		}
 
-		if (!this.strings) {
-			this.strings = cfg.strings || {};
+		this.strings = {};
+		if ( 'strings' in cfg) {
+			this.strings = cfg.strings;
 		}
 
-		if (!this.infoButton) {
-			this.infoButton = cfg.button || DEFAULT_INFO_BUTTON;
+		this.infoButton = DEFAULT_INFO_BUTTON;
+		if ( 'button' in cfg) {
+			this.infoButton = cfg.button;
 		}
 
-		if (!this.infoTitle) {
-			this.infoTitle = cfg.title || DEFAULT_INFO_TITLE;
+		this.infoTitle = DEFAULT_INFO_TITLE;
+		if ( 'title' in cfg) {
+			this.infoTitle = cfg.title;
 		}
 
-		if (!this.infoItems) {
-			this.infoItems = cfg.options || DEFAULT_INFO_ITEMS;
+		this.infoItems = DEFAULT_INFO_ITEMS;
+		if ( 'options' in cfg) {
+			this.infoItems = cfg.options;
 		}
 
 		this.selectTranslation();
@@ -94,20 +95,28 @@ export default class InfoButton extends UICorePlugin {
 			this.infoItems[i].id = 'info' + i;
 		}
 
-		if (this.shouldRender()) {
-			let style = Styler.getStyleFor(pluginStyle, { baseUrl: this.core.options.baseUrl });
+		let style = Styler.getStyleFor(pluginStyle, { baseUrl: this.options.baseUrl });
 
-			this.$el.html(this.template({ 'button': this.infoButton, 'items': this.infoItems, 'title': this.getTitle() }));
-			this.$el.append(style);
+		this.$el.html(this.template({ 'visible': this.visible, 'button': this.infoButton, 'items': this.infoItems, 'title': this.getTitle() }));
+		this.$el.append(style);
 
-			this.core.mediaControl.$('.media-control-right-panel').append(this.el);
+		this.rendered = false;
+
+		return;
+	}
+
+	render() {
+		if (this.rendered === true) {
+			return;
 		}
 
-		return this;
+		this.rendered = true;
+
+		$('.media-control-right-panel').append(this.$el);
 	}
 
 	language() {
-		return this.core.options.language || Utils.getBrowserLanguage(); 
+		return this.options.language || Utils.getBrowserLanguage();
 	}
 
 	selectTranslation() {
@@ -176,6 +185,10 @@ export default class InfoButton extends UICorePlugin {
 		this.$('.info_button ul').hide();
 	}
 
+	showInfoButtonMenu() {
+		this.$('.info_button ul').show();
+	}
+
 	toggleContextMenu() {
 		this.$('.info_button ul').toggle();
 	}
@@ -186,5 +199,30 @@ export default class InfoButton extends UICorePlugin {
 
 	getTitle() {
 		return this.infoTitle;
+	}
+
+	// PluginControl interface
+	pluginControl() {
+		let self = this;
+
+		return {
+			icon: function() {
+				if (self.infoButton.image) {
+					return self.infoButton.image;
+				}
+
+				return icon;
+			},
+			name: function() {
+				return self.infoTitle;
+			},
+			toggle: function() {
+				self.toggleContextMenu();
+				return true;
+			},
+			toggled: function() {
+				return true;
+			}
+		};
 	}
 }

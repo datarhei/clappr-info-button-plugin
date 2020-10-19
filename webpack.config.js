@@ -24,16 +24,25 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				loaders: ['style-loader?singleton=true', 'css-loader', 'postcss-loader', 'sass-loader?includePaths[]='
-					+ path.resolve(__dirname, './node_modules/compass-mixins/lib')
-					+ '&includePaths[]='
-					+ path.resolve(__dirname, './node_modules/clappr/src/base/scss')
-					+ '&includePaths[]='
-					+ path.resolve(__dirname, './src/base/scss')
+                    + path.resolve(__dirname, './node_modules/compass-mixins/lib')
+                    + '&includePaths[]='
+                    + path.resolve(__dirname, './node_modules/clappr/src/base/scss')
+                    + '&includePaths[]='
+                    + path.resolve(__dirname, './src/base/scss')
 				],
 				include: path.resolve(__dirname, 'src'),
 			},
 			{
 				test: /\.html/, loader: 'html-loader?minimize=false'
+			},
+			{
+				test: /\.svg$/i,
+				use: [
+					{
+						loader: 'url-loader',
+
+					},
+				],
 			},
 		],
 	},
