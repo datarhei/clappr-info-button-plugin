@@ -2,6 +2,7 @@ import { Events, Styler, UIContainerPlugin, Utils, template, $ } from 'clappr';
 import pluginHtml from './public/info-button.html';
 import pluginStyle from './public/style.scss';
 import icon from './public/icon.svg';
+import icon_disabled from './public/icon_disabled.svg';
 
 const DEFAULT_INFO_ITEMS = [
 	{ label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin' },
@@ -207,8 +208,8 @@ export default class InfoButton extends UIContainerPlugin {
 
 		return {
 			icon: function() {
-				if (self.infoButton.image) {
-					return self.infoButton.image;
+				if (self.$('.info_button ul').css('display') === 'none') {
+					return icon_disabled;
 				}
 
 				return icon;

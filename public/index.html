@@ -1,50 +1,50 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../dist/info-button.js"></script>
-    <title>clappr-info-button-plugin Test Page</title>
-    <script type="text/javascript" charset="utf-8">
-    window.onload = function() {
-        var player = new Clappr.Player({
-            source: 'https://ch-fra-n8.livespotting.com/vpu/qvciam2t/nsav1jnq_720.m3u8',
-            parentId: '#player',
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../dist/info-button.js"></script>
+	<title>clappr-info-button-plugin Test Page</title>
+	<script type="text/javascript" charset="utf-8">
+	window.onload = function() {
+		var player = new Clappr.Player({
+			source: 'https://ch-fra-n8.livespotting.com/vpu/qvciam2t/nsav1jnq_720.m3u8',
+			parentId: '#player',
 
-            plugins: [InfoButton],
+			plugins: [InfoButton],
 
-            infoButtonConfig: {
-                button: {
-                    image: 'info-button.png'
-                },
-                title: 'Info',
-                options: [
-                    {label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-                    {label: 'Hello', link: function() { alert('hello!'); }}
-                ],
-                strings: {
-                    'de': {
-                        title: 'Informationen',
-                        options: [
-                            {label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
-                            {label: 'Hallo', link: function() { alert('hallo!'); }}
-                        ]
-                    }
-                }
-            },
+			infoButtonConfig: {
+				button: {
+					image: 'info-button.png'
+				},
+				title: 'Info',
+				options: [
+					{label: 'About', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+					{label: 'Hello', link: function() { alert('hello!'); }}
+				],
+				strings: {
+					'de': {
+						title: 'Informationen',
+						options: [
+							{label: 'Über', link: 'https://github.com/datarhei/clappr-info-button-plugin'},
+							{label: 'Hallo', link: function() { alert('hallo!'); }}
+						]
+					}
+				}
+			},
 
-            width: 640,
-            height: 360,
-            hideMediaControl: false,
-            autoPlay: true
-        });
-    }
-    </script>
+			width: 640,
+			height: 360,
+			hideMediaControl: true,
+			autoPlay: true
+		});
+	}
+	</script>
 </head>
 <body>
-    <div align="center">
-    <div id="player">
-    </div>
-    </div>
+	<div align="center">
+	<div id="player">
+	</div>
+	</div>
 </body>
 </html>
