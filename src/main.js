@@ -208,20 +208,24 @@ export default class InfoButton extends UIContainerPlugin {
 
 		return {
 			icon: function() {
-				if (self.$('.info_button ul').css('display') === 'none') {
-					return icon_disabled;
+				if (this.toggled()) {
+					return icon;
 				}
 
-				return icon;
+				return icon_disabled;
 			},
 			name: function() {
 				return self.infoTitle;
 			},
 			toggle: function() {
 				self.toggleContextMenu();
-				return true;
+				return this.toggled();
 			},
 			toggled: function() {
+				if (self.$('.info_button ul').css('display') === 'none') {
+					return false;
+				}
+
 				return true;
 			}
 		};
