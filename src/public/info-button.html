@@ -1,21 +1,21 @@
 <% if (visible) { %>
 <button data-info-button-button>
-  <% if (button) { %>
-    <% if (button.image) { %>
-      <img src="<%= button.image %>" title="<%= button.title %>"/>
-    <% } else if (button.title) { %>
-      <%= button.title %>
-    <% }; %>
-  <% } else if (title) { %>
-    <%= title %>
-  <% }; %>
+	<% if (button) { %>
+		<% if (button.image) { %>
+			<img src="<%= button.image %>" title="<%= button.title %>"/>
+		<% } else if (button.title) { %>
+			<%= button.title %>
+		<% }; %>
+	<% } else if (title) { %>
+		<%= title %>
+	<% }; %>
 </button>
 <% } %>
-<ul>
-  <% if (title) { %>
-  <li data-title><%= title %></li>
-  <% }; %>
-  <% for (var i = 0; i < items.length; i++) { %>
-    <li><a href="#" data-info-button-select="<%= items[i].id %>"><%= items[i].label %></a></li>
-  <% }; %>
+<ul class="<% if (!visible) { %>container<% } %>">
+	<% if (title) { %>
+	<li data-title><%= title %></li>
+	<% }; %>
+	<% for (var i = 0; i < items.length; i++) { %>
+		<li><a href="#" data-info-button-select="<%= items[i].id %>"><%= items[i].label %></a></li>
+	<% }; %>
 </ul>

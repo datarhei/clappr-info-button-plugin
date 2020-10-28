@@ -113,7 +113,12 @@ export default class InfoButton extends UIContainerPlugin {
 
 		this.rendered = true;
 
-		$('.media-control-right-panel').append(this.$el);
+		if (this.visible === true) {
+			$('.media-control-right-panel').append(this.$el);
+		}
+		else {
+			this.container.$el.append(this.$el);
+		}
 	}
 
 	language() {
