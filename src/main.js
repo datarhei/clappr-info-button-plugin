@@ -1,4 +1,4 @@
-import { Events, Styler, UIContainerPlugin, Utils, template, $ } from 'clappr';
+import { Events, Styler, UIContainerPlugin, Utils, template, $ } from '@clappr/core';
 import pluginHtml from './public/info-button.html';
 import pluginStyle from './public/style.scss';
 import icon from './public/icon.svg';
