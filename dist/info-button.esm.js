@@ -164,6 +164,13 @@ var InfoButton = /*#__PURE__*/function (_UIContainerPlugin) {
   }
 
   _createClass(InfoButton, [{
+    key: "supportedVersion",
+    get: function get() {
+      return {
+        min: "0.4.18"
+      };
+    }
+  }, {
     key: "name",
     get: function get() {
       return 'info_button';
@@ -402,7 +409,7 @@ var InfoButton = /*#__PURE__*/function (_UIContainerPlugin) {
   }], [{
     key: "version",
     get: function get() {
-      return "0.2.7";
+      return "0.2.8";
     }
   }]);
 

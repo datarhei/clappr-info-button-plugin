@@ -168,6 +168,13 @@
     }
 
     _createClass(InfoButton, [{
+      key: "supportedVersion",
+      get: function get() {
+        return {
+          min: "0.4.18"
+        };
+      }
+    }, {
       key: "name",
       get: function get() {
         return 'info_button';
@@ -406,7 +413,7 @@
     }], [{
       key: "version",
       get: function get() {
-        return "0.2.7";
+        return "0.2.8";
       }
     }]);
 

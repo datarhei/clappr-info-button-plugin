@@ -1,7 +1,7 @@
 {
 	"name": "info-button",
 	"description": "A simple plugin for Clappr that adds an info button.",
-	"version": "0.2.7",
+	"version": "0.2.8",
 	"main": "dist/info-button.js",
 	"module": "dist/info-button.esm.js",
 	"scripts": {
