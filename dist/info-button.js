@@ -134,7 +134,7 @@
     }
   }
 
-  var css_248z = ".info_button[data-info-button] {\n  float: right;\n  position: relative;\n  height: 100%;\n}\n.info_button[data-info-button] button {\n  background-color: transparent;\n  color: #fff;\n  font-family: Roboto, \"Open Sans\", Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  border: none;\n  font-size: 10px;\n  height: 100%;\n  cursor: pointer;\n}\n.info_button[data-info-button] button img {\n  height: 22px;\n}\n.info_button[data-info-button] button:hover {\n  color: #c9c9c9;\n}\n.info_button[data-info-button] button.changing {\n  -webkit-animation: pulse 0.5s infinite alternate;\n}\n.info_button[data-info-button] > ul {\n  list-style-type: none;\n  position: absolute;\n  bottom: 100%;\n  border: 1px solid black;\n  display: none;\n  background-color: #e6e6e6;\n  white-space: nowrap;\n}\n.info_button[data-info-button] > ul.container {\n  bottom: 50%;\n  right: 5px;\n  z-index: 1000;\n}\n.info_button[data-info-button] li {\n  font-size: 10px;\n}\n.info_button[data-info-button] li[data-title] {\n  background-color: #c3c2c2;\n  padding: 5px;\n}\n.info_button[data-info-button] li a {\n  color: #444;\n  padding: 2px 10px;\n  display: block;\n  text-decoration: none;\n}\n.info_button[data-info-button] li a:hover {\n  background-color: #555;\n  color: white;\n}\n.info_button[data-info-button] li a:hover a {\n  color: white;\n  text-decoration: none;\n}\n.info_button[data-info-button] li.current a {\n  color: #f00;\n}\n\n@-webkit-keyframes pulse {\n  0% {\n    color: #fff;\n  }\n  50% {\n    color: #ff0101;\n  }\n  100% {\n    color: #B80000;\n  }\n}";
+  var css_248z = ".info-button[data-info-button] {\n  float: right;\n  position: relative;\n  height: 100%;\n}\n.info-button[data-info-button] button {\n  background-color: transparent;\n  color: #fff;\n  font-family: Roboto, \"Open Sans\", Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  border: none;\n  font-size: 10px;\n  height: 100%;\n  cursor: pointer;\n}\n.info-button[data-info-button] button img {\n  height: 22px;\n}\n.info-button[data-info-button] button:hover {\n  color: #c9c9c9;\n}\n.info-button[data-info-button] button.changing {\n  -webkit-animation: pulse 0.5s infinite alternate;\n}\n.info-button[data-info-button] > ul {\n  list-style-type: none;\n  position: absolute;\n  bottom: 100%;\n  border: 1px solid black;\n  display: none;\n  background-color: #e6e6e6;\n  white-space: nowrap;\n}\n.info-button[data-info-button] > ul.container {\n  bottom: 50%;\n  right: 5px;\n  z-index: 1000;\n}\n.info-button[data-info-button] li {\n  font-size: 10px;\n}\n.info-button[data-info-button] li[data-title] {\n  background-color: #c3c2c2;\n  padding: 5px;\n}\n.info-button[data-info-button] li a {\n  color: #444;\n  padding: 2px 10px;\n  display: block;\n  text-decoration: none;\n}\n.info-button[data-info-button] li a:hover {\n  background-color: #555;\n  color: white;\n}\n.info-button[data-info-button] li a:hover a {\n  color: white;\n  text-decoration: none;\n}\n.info-button[data-info-button] li.current a {\n  color: #f00;\n}\n\n@-webkit-keyframes pulse {\n  0% {\n    color: #fff;\n  }\n  50% {\n    color: #ff0101;\n  }\n  100% {\n    color: #B80000;\n  }\n}";
   styleInject(css_248z);
 
   var _icon = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0xIDE1aC0ydi02aDJ2NnptMC04aC0yVjdoMnYyeiIvPjwvc3ZnPg==';
@@ -259,16 +259,12 @@
           this.infoItems[i].id = 'info' + i;
         }
 
-        var style = core.Styler.getStyleFor(css_248z, {
-          baseUrl: this.options.baseUrl
-        });
         this.$el.html(this.template({
           'visible': this.visible,
           'button': this.infoButton,
           'items': this.infoItems,
           'title': this.getTitle()
         }));
-        this.$el.append(style);
         this.rendered = false;
         return;
       }
@@ -359,22 +355,22 @@
     }, {
       key: "hideInfoButtonMenu",
       value: function hideInfoButtonMenu() {
-        this.$('.info_button ul').hide();
+        this.$('.info-button ul').hide();
       }
     }, {
       key: "showInfoButtonMenu",
       value: function showInfoButtonMenu() {
-        this.$('.info_button ul').show();
+        this.$('.info-button ul').show();
       }
     }, {
       key: "toggleContextMenu",
       value: function toggleContextMenu() {
-        this.$('.info_button ul').toggle();
+        this.$('.info-button ul').toggle();
       }
     }, {
       key: "buttonElement",
       value: function buttonElement() {
-        return this.$('.info_button button');
+        return this.$('.info-button button');
       }
     }, {
       key: "getTitle",
@@ -402,7 +398,7 @@
             return this.toggled();
           },
           toggled: function toggled() {
-            if (self.$('.info_button ul').css('display') === 'none') {
+            if (self.$('.info-button ul').css('display') === 'none') {
               return false;
             }
 
@@ -413,7 +409,7 @@
     }], [{
       key: "version",
       get: function get() {
-        return "0.2.9";
+        return "0.2.10";
       }
     }]);
 

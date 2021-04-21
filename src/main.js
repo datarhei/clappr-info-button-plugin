@@ -1,6 +1,6 @@
-import { Events, Styler, UIContainerPlugin, Utils, template, $ } from '@clappr/core';
+import { Events, UIContainerPlugin, Utils, template, $ } from '@clappr/core';
 import pluginHtml from './public/info-button.html';
-import pluginStyle from './public/style.scss';
+import './public/style.scss';
 import icon from './public/icon.svg';
 import icon_disabled from './public/icon_disabled.svg';
 
@@ -98,10 +98,7 @@ export default class InfoButton extends UIContainerPlugin {
 			this.infoItems[i].id = 'info' + i;
 		}
 
-		let style = Styler.getStyleFor(pluginStyle, { baseUrl: this.options.baseUrl });
-
 		this.$el.html(this.template({ 'visible': this.visible, 'button': this.infoButton, 'items': this.infoItems, 'title': this.getTitle() }));
-		this.$el.append(style);
 
 		this.rendered = false;
 
@@ -190,19 +187,19 @@ export default class InfoButton extends UIContainerPlugin {
 	}
 
 	hideInfoButtonMenu() {
-		this.$('.info_button ul').hide();
+		this.$('.info-button ul').hide();
 	}
 
 	showInfoButtonMenu() {
-		this.$('.info_button ul').show();
+		this.$('.info-button ul').show();
 	}
 
 	toggleContextMenu() {
-		this.$('.info_button ul').toggle();
+		this.$('.info-button ul').toggle();
 	}
 
 	buttonElement() {
-		return this.$('.info_button button');
+		return this.$('.info-button button');
 	}
 
 	getTitle() {
@@ -229,7 +226,7 @@ export default class InfoButton extends UIContainerPlugin {
 				return this.toggled();
 			},
 			toggled: function() {
-				if (self.$('.info_button ul').css('display') === 'none') {
+				if (self.$('.info-button ul').css('display') === 'none') {
 					return false;
 				}
 
