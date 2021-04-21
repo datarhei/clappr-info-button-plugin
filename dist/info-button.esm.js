@@ -173,7 +173,7 @@ var InfoButton = /*#__PURE__*/function (_UIContainerPlugin) {
   }, {
     key: "name",
     get: function get() {
-      return 'info_button';
+      return 'info-button';
     }
   }, {
     key: "template",
@@ -409,7 +409,7 @@ var InfoButton = /*#__PURE__*/function (_UIContainerPlugin) {
   }], [{
     key: "version",
     get: function get() {
-      return "0.2.8";
+      return "0.2.9";
     }
   }]);
 

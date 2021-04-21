@@ -27,7 +27,7 @@ export default class InfoButton extends UIContainerPlugin {
 	get supportedVersion() { return { min: CLAPPR_CORE_VERSION }; }
 
 	get name() {
-		return 'info_button';
+		return 'info-button';
 	}
 
 	get template() {

@@ -177,7 +177,7 @@
     }, {
       key: "name",
       get: function get() {
-        return 'info_button';
+        return 'info-button';
       }
     }, {
       key: "template",
@@ -413,7 +413,7 @@
     }], [{
       key: "version",
       get: function get() {
-        return "0.2.8";
+        return "0.2.9";
       }
     }]);
 
